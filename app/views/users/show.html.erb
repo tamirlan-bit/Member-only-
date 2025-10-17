@@ -1,0 +1,7 @@
+<h1>Welcome, <%= @user.username %>!</h1>
+
+<p>You are logged in.</p>
+<h3> Your email: <%= @user.email %>!</h3>
+<% if logged_in? && current_user == @user %>
+  <%= button_to "Log out", logout_path, method: :delete %>
+<% end %>
