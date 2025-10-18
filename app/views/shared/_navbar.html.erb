@@ -1,0 +1,15 @@
+<nav>
+  <div>
+    <%= link_to "Home", root_path %>
+  </div>
+
+  <div>
+    <% if logged_in? %>
+      Logged in as <strong><%= current_user.username %></strong>
+      <%= button_to "Log out", logout_path, method: :delete %>
+    <% else %>
+      <%= link_to "Log in", login_path %> |
+      <%= link_to "Sign up", new_user_path %>
+    <% end %>
+  </div>
+</nav>

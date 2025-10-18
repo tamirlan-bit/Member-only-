@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :require_login, except: [ :index, :show ]
+
   def index
     @posts = Post.all
   end
@@ -11,7 +13,7 @@ class PostsController < ApplicationController
   def new
     @post = current_user.posts.build
   end
-  
+
   def create
    @post = current_user.posts.build(post_params)
 
@@ -20,9 +22,9 @@ class PostsController < ApplicationController
       redirect_to @post, notice: "Post created successfully!"
     else
       render :new, status: :unprocessable_entity
-    end  
+    end
   end
-  
+
   def edit
     @post = Post.find(params[:id])
   end
@@ -48,4 +50,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body)
   end
+  
 end
