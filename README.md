@@ -1,7 +1,6 @@
 # Members Only
 
-A simple Ruby on Rails application where only signed-in users can see post authors and add comments.  
-Inspired by [The Odin Project](https://www.theodinproject.com/lessons/ruby-on-rails-members-only) assignment.
+A simple Ruby on Rails application where only signed-in users can see post authors and add comments. 
 
 ## 📝 Features
 
