@@ -1,24 +1,25 @@
-# README
+# Members Only
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Ruby on Rails application where only signed-in users can see post authors and add comments.  
+Inspired by [The Odin Project](https://www.theodinproject.com/lessons/ruby-on-rails-members-only) assignment.
 
-Things you may want to cover:
+## 📝 Features
 
-* Ruby version
+- User authentication with Devise  
+- Users can create posts and comment  
+- Non-logged users can see posts, but authors and comments are hidden  
+- Clean navbar updates based on sign-in state
 
-* System dependencies
+## 📸 Screenshots
 
-* Configuration
+### 🏠 Index Page
+![Index](app/assets/images/index.jpg)
 
-* Database creation
+### ✍️ Logged-in Post View
+![Logged Post](app/assets/images/logged_post.jpg)
 
-* Database initialization
+### 🚪 Member (Logged-out) Post View
+![Member Post](app/assets/images/member_post.jpg)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 📝 Sign Up Page
+![Signup](app/assets/images/signup.jpg)
