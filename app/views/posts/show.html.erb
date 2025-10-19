@@ -1,31 +1,30 @@
-
 <div class="post">
+  <h1><%= @post.title %></h1>
+  <p><%= @post.body %></p>
 
-<h1><%= @post.title %></h1>
-<p><%= @post.body %></p>
+  <% if user_signed_in? %>
+    <em>Posted by: <%= @post.user.username %></em>
+  <% else %>
+    <em>Posted by: [Members only]</em>
+  <% end %>
 
-<% if logged_in? %>
-  <em>Posted by: <%= @post.user.username %></em>
-<% else %>
-  <em>Posted by: [Members only]</em>
-<% end %>
-<ul>
-  <li><%= link_to "Edit", edit_post_path(@post) %></li>
-  <li><%= link_to "Destroy", post_path(@post), 
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></li>
-</ul>
+  <ul>
+    <li><%= link_to "Edit", edit_post_path(@post) %></li>
+    <li><%= link_to "Destroy", post_path(@post), 
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></li>
+  </ul>
 
-<hr>
+  <hr>
 
-<h2>Comments</h2>
-<%= render @post.comments %>
+  <h2>Comments</h2>
+  <%= render @post.comments %>
 
-<% if logged_in? %>
-<h2>Add a comment:</h2>
-<%= render "comments/form", post: @post %>
-<% else %>
-<p>You must <%= link_to "log in", login_path %> to comment.</p>
-<% end %>
+  <% if user_signed_in? %>
+    <h2>Add a comment:</h2>
+    <%= render "comments/form", post: @post %>
+  <% else %>
+    <p>You must <%= link_to "log in", new_user_session_path %> to comment.</p>
+  <% end %>
 
-<%= link_to "Back", posts_path %>
+  <%= link_to "Back", posts_path %>
 </div>

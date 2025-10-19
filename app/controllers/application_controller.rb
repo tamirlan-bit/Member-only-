@@ -2,18 +2,12 @@ class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
-  helper_method :current_user, :logged_in?
+   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
-
-  def logged_in?
-    !!current_user
-  end
-
-  def require_login
-    redirect_to login_path, alert: "You must be logged in to do that." unless logged_in?
-  end
-
 end

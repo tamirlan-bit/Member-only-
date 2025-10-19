@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :require_login
+  before_action :authenticate_user!
 
   def create
     @post = Post.find(params[:post_id])
